@@ -30,6 +30,23 @@ class CategoryControllerTest extends TestCase
             $this->assertArrayHasKey('category', $category);
         }
     }
+
+    /** @test */
+    public function can_show_category_by_id()
+    {
+     // Crear una categoría
+    $category = Category::factory()->create();
+
+    // Crear una instancia del controlador
+    $controller = new CategoryController();
+
+    // Llamar al método show del controlador para mostrar la categoría por ID
+    $response = $controller->show($category->id);
+
+    // Verificar que la respuesta tiene el código de estado HTTP 200 (OK)
+    $this->assertEquals(200, $response->status());
+        
+    }
 }
 
 
