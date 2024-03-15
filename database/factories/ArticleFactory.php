@@ -18,10 +18,10 @@ class ArticleFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->word(),
+            'title' => $this->faker->word(),
             'image_url' => $this->faker->url(),
             'description' => $this->faker->text(250),
-            'category_id' => Category::all()->random()->id,
+            'categories_id' => Category::all()->random()->id,
         ];
     }
 }
