@@ -17,8 +17,14 @@ class CategoryFactory extends Factory
      */
     public function definition(): array
     {
-        return [
-            'category_id'=> Category::pluck('id')->random(),
-        ];
+            // Obtener todos los nombres de categorías existentes
+            $existingCategories = Category::pluck('category')->toArray();
+
+            // Seleccionar aleatoriamente uno de los nombres de categoría existentes
+            $randomCategoryName = $this->faker->randomElement($existingCategories);
+    
+            return [
+                'category' => $randomCategoryName,
+            ];
     }
 }
