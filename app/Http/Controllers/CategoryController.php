@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use App\Models\Article;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -26,11 +25,11 @@ class CategoryController extends Controller
         $request->validate([
             'category' => 'required|string|max:255|unique:categories',
         ]);
-
-        $category = Category::create([
-            'category' => $request->input('category'),
-        ]);
-
+    
+        $category = new Category(); 
+        $category->category = $request->input('category');
+        $category->save(); 
+    
         return response()->json($category, 201);
     }
 
@@ -56,15 +55,4 @@ class CategoryController extends Controller
         return response()->json(null, 204);
     }
 
-    public function attachArticle(Request $request, $categoryId)
-    {
-        $category = Category::findOrFail($categoryId);
-
-        $article = new Article();
-        $article->title = $request->input('title');
-        $article->category()->associate($category); 
-        $article->save();
-
-        return response()->json($article, 201);
-    }
 }
