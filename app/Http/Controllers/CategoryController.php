@@ -15,8 +15,8 @@ class CategoryController extends Controller
     }
 
     public function show($id){
-        $categories= Category::find($id);
-        return $categories;
+        $category = Category::findOrFail($id);
+        return response()->json($category);
     }
 
     public function store(Request $request)
