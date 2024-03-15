@@ -12,4 +12,11 @@ class CategoryController extends Controller
         $categories = Category::all();
         return $categories;
     }
+
+    public function show($id){
+        $categories= Category::find($id);
+        return $categories;
+    }
+
+    
 }
