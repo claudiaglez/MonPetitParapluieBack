@@ -79,6 +79,33 @@ public function can_create_an_article()
     // Assert the article is created in the database
     $this->assertDatabaseHas('articles', $articleData);
 }
+
+/** @test */
+public function can_update_an_article()
+{
+    // Create an article
+    $article = Article::factory()->create();
+
+    // Update data for the article
+    $updatedData = [
+        'title' => 'Updated Title',
+        'description' => 'Updated description.',
+    ];
+
+    // Call the update method with the updated data
+    $response = $this->put('api/articles/' . $article->id, $updatedData);
+
+    // Assert the response
+    $response->assertStatus(200)
+             ->assertJson([
+                 'status' => 200,
+                 'data' => $updatedData,
+             ]);
+
+    // Assert the article is updated in the database
+    $this->assertDatabaseHas('articles', $updatedData);
+}
+
  
 }
 
