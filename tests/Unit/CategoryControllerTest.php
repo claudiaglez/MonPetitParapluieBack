@@ -2,7 +2,6 @@
 
 use Tests\TestCase;
 use App\Models\Category;
-use App\Http\Controllers\CategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Testing\DatabaseTransactions; 
 
