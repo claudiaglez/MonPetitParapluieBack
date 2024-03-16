@@ -52,6 +52,33 @@ class ArticleControllerTest extends TestCase
                 ]);
         }
      }
+
+ /** @test */
+public function can_create_an_article()
+{
+    // Define article data
+    $articleData = [
+        'title' => 'Test Article',
+        'image_url' => 'https://example.com/image.jpg',
+        'description' => 'This is a test article.',
+        'categories_id' => 1,
+    ];
+
+    // Call the store method with the article data
+    $response = $this->post('api/articles', $articleData);
+
+    // Assert the response status code is 201 (created)
+    $response->assertStatus(201);
+
+    // Assert the response JSON contains the expected data
+    $response->assertJson([
+        'status' => 201,
+        'data' => $articleData,
+    ]);
+
+    // Assert the article is created in the database
+    $this->assertDatabaseHas('articles', $articleData);
+}
  
 }
 
