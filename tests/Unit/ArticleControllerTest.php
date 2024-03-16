@@ -1,11 +1,15 @@
 <?php
 
+use Illuminate\Foundation\Testing\DatabaseTransactions; // Importa el trait DatabaseTransactions
 use Tests\TestCase;
 use App\Models\Article;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Http\Controllers\ArticleController;
 
 class ArticleControllerTest extends TestCase
 {
+
+    use DatabaseTransactions; 
     /** @test */
     public function can_list_all_articles()
     {
@@ -32,6 +36,23 @@ class ArticleControllerTest extends TestCase
             $this->assertArrayHasKey('categories_id', $article);
         }
     }
+
+     /** @test */
+     public function can_show_an_article()
+     {
+        {
+            $article = Article::factory()->create();
+    
+            $response = $this->get('/api/articles/' . $article->id);
+    
+            $response->assertStatus(200)
+                ->assertJson([
+                    'status' => 200,
+                    'data' => $article->toArray(),
+                ]);
+        }
+     }
+ 
 }
 
 
