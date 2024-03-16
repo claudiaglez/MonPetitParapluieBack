@@ -47,6 +47,27 @@ class CategoryControllerTest extends TestCase
     $this->assertEquals(200, $response->status());
         
     }
+
+     /** @test */
+     public function can_store_category()
+     {
+         // Definir los datos de la categoría a crear
+         $categoryData = [
+             'category' => 'Test Category',
+         ];
+ 
+         // Crear una instancia del controlador
+         $controller = new CategoryController();
+ 
+         // Llamar al método store del controlador para almacenar la categoría
+         $response = $controller->store(new Request($categoryData));
+ 
+         // Verificar que la respuesta tiene el código de estado HTTP 201 (Created)
+         $this->assertEquals(201, $response->status());
+ 
+         // Verificar que la categoría está creada en la base de datos
+         $this->assertDatabaseHas('categories', $categoryData);
+     }
 }
 
 
