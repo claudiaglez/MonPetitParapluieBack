@@ -9,17 +9,5 @@ use App\Http\Controllers\ArticleController;
 //     return $request->user();
 // })->middleware('auth:sanctum');
 
-Route::controller(CategoryController::class)->group(function() {
-    Route::get('/categories',  'index' );
-    Route::get('/categories/{id}',  'show' );
-    Route::post('/categories',  'store' );
-      
- });
-
- Route::controller(ArticleController::class)->group(function() {
-    Route::get('/articles',  'index' );
-    Route::get('/articles/{id}',  'show' );
-    Route::post('/articles',  'store' );
-    Route::put('/articles/{id}',  'update' );
-    Route::delete('/articles/{id}',  'destroy' );
-}); 
+Route::resource('categories', CategoryController::class);
+Route::resource('articles', ArticleController::class);

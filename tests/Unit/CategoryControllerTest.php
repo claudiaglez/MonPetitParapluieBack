@@ -4,10 +4,11 @@ use Tests\TestCase;
 use App\Models\Category;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Testing\DatabaseTransactions; 
 
 class CategoryControllerTest extends TestCase
 {
-
+    use DatabaseTransactions; 
     /** @test */
     public function can_list_all_categories()
     {
@@ -56,16 +57,34 @@ public function can_update_category()
         'category' => 'Updated Category Name',
     ];
 
-    // Crear una instancia del controlador
-    $controller = new CategoryController();
-
     // Llamar al método update del controlador para actualizar la categoría
-    $response = $controller->update(new Request($updatedCategoryData), $category->id);
+    $response = $this->put('api/categories/' . $category->id, $updatedCategoryData);
 
     // Verificar que la respuesta tiene el código de estado HTTP 200 (OK)
-    $this->assertEquals(200, $response->status());
+    $response->assertStatus(200)
+             ->assertJson([
+                 'id' => $category->id,
+                 'category' => 'Updated Category Name',
+                 // Asegúrate de incluir cualquier otro campo que esperes en la respuesta JSON
+             ]);
 
     // Verificar que la categoría ha sido actualizada en la base de datos
     $this->assertDatabaseHas('categories', $updatedCategoryData);
 }
+
+    /** @test */
+    public function can_delete_category()
+    {
+    // Sembrar una categoría en la base de datos
+    $category = Category::factory()->create();
+
+    // Llamamos al método destroy del controlador a través de una solicitud HTTP DELETE
+    $response = $this->delete('/api/categories/' . $category->id);
+
+    // Verificamos que se haya devuelto una respuesta con el código 204 (sin contenido)
+    $response->assertStatus(204);
+
+    // Verificamos que la categoría haya sido eliminada de la base de datos
+    $this->assertNull(Category::find($category->id));
+    }
 }
