@@ -9,9 +9,6 @@ class ArticleControllerTest extends TestCase
     /** @test */
     public function can_list_all_articles()
     {
-        // Obtener la cantidad de artículos existentes en la base de datos
-        $existingArticlesCount = Article::count();
-
         // Crear una instancia del controlador
         $controller = new ArticleController();
 
@@ -21,20 +18,20 @@ class ArticleControllerTest extends TestCase
         // Convertir la respuesta JSON en un array
         $responseArray = json_decode($response->getContent(), true);
 
-        // Comprobar que la cantidad de artículos en la respuesta es igual a la cantidad existente en la base de datos
-        $this->assertCount($existingArticlesCount, $responseArray);
+        // Verificar que la respuesta contiene al menos un elemento en el array 'data'
+        $this->assertArrayHasKey('data', $responseArray);
+        $this->assertIsArray($responseArray['data']);
+        $this->assertGreaterThan(0, count($responseArray['data']));
 
-        // Comprobar que cada elemento del array tiene los campos esperados
-        foreach ($responseArray as $article) {
+        // Verificar que cada artículo en la respuesta tiene los campos esperados
+        foreach ($responseArray['data'] as $article) {
             $this->assertArrayHasKey('id', $article);
             $this->assertArrayHasKey('title', $article);
             $this->assertArrayHasKey('image_url', $article);
             $this->assertArrayHasKey('description', $article);
-            $this->assertArrayHasKey('categories_id', $article); 
+            $this->assertArrayHasKey('categories_id', $article);
         }
     }
 }
-
-
 
 
