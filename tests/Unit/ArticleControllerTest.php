@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Foundation\Testing\DatabaseTransactions; // Importa el trait DatabaseTransactions
+use Illuminate\Foundation\Testing\DatabaseTransactions; 
 use Tests\TestCase;
 use App\Models\Article;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -106,7 +106,25 @@ public function can_update_an_article()
     $this->assertDatabaseHas('articles', $updatedData);
 }
 
- 
+ /** @test */
+ public function can_delete_an_article()
+    {
+    // Creamos un artículo de prueba para eliminarlo
+    $article = Article::factory()->create();
+
+    // Llamamos al método destroy del controlador
+    $controller = new ArticleController();
+    $response = $controller->destroy($article->id);
+
+    // Verificamos que se haya devuelto una respuesta 204 (sin contenido)
+    $this->assertEquals(204, $response->getStatusCode());
+
+    // Verificamos que el artículo haya sido eliminado de la base de datos
+    $this->assertNull(Article::find($article->id));
+    }
 }
+
+ 
+
 
 
