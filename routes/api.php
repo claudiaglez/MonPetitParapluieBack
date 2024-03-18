@@ -11,3 +11,4 @@ use App\Http\Controllers\ArticleController;
 
 Route::resource('categories', CategoryController::class);
 Route::resource('articles', ArticleController::class);
+Route::get('categories/{category}/articles', [CategoryController::class, 'articles']);

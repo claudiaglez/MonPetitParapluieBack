@@ -10,8 +10,8 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::pluck('category');
-        return $categories;
+        $categories = Category::select('id', 'category')->get();
+        return response()->json($categories);
     }
 
     public function show($id)
@@ -53,6 +53,15 @@ class CategoryController extends Controller
         $category->delete();
 
         return response()->json(null, 204);
+    }
+
+    public function articles(Category $category)
+    {
+        // Obtener los artículos asociados con la categoría especificada
+        $articles = $category->articles();
+
+        // Devolver los artículos como una respuesta JSON
+        return response()->json($articles);
     }
 
 }
