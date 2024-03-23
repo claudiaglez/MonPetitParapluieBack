@@ -1,66 +1,138 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Mon Petit Parapluie :open_umbrella: <br>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+Salut! Welcome to Mon Petit Parapluie, a showcase to show all the cross stitch projects I have been making over the years.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+## 🎯 Project Overview
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+This project is my Final Individual Project for the full-stack development Bootcamp FemCoders Norte in Factoría F5.
+<br><br>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+## Backend Stack
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-### Premium Partners
+This repository serves as the **backend stack** for my project. It is intricately linked with my [**frontend repository**](https://github.com/claudiaglez/MonPetitParapluieFront)<br><br>
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
+## ⚙️ Technologies
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
+[![My Skills](https://skillicons.dev/icons?i=php,laravel,mysql)](https://skillicons.dev)
+<br>
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+## 🚀 Installation Guide (Laravel and MySQL)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+**1. Clone the Repository**<br>
+First, clone your project repository from GitHub or any other version control system:<br>
+```git clone: https://github.com/claudiaglez/MonPetitParapluieBack.git```      
+
+
+
+
+**2. Configure Environment**<br>
+Navigate to your project directory:
+
+
+    cd MonPetitParapluieBack   
+
+
+Copy the .env.example file and rename it to .env. Then, configure the necessary environment variables, such as the database connection:
+
+
+    cp .env.example .env    
+
+
+Edit the .env file and set values for DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, and DB_PASSWORD according to your MySQL setup.
+
+
+**3. Install Dependencies**<br>
+Install project dependencies using Composer:
+
+
+    composer install    
+
+
+**4. Generate Application Key**<br>
+Generate a unique application key for your project:
+
+
+    php artisan key:generate    
+
+
+**5. Run Migrations**<br>
+Create the database tables by running migrations:
+
+
+    php artisan migrate    
+
+
+**6. Start the Server**
+Launch the Laravel development server:
+
+
+    php artisan serve    
+
+
+**That’s it! Enjoy! ** <br>
+You can access it at :  ```http://localhost:8000.
+npm start. ```  
+
+
+<br><br>
+
+
+## 🌐 API Routes
+
+
+I’ve developed several API routes using Laravel to handle HTTP requests. These routes are essential for communication between the frontend and backend of our application.
+
+
+**Product Routes:**<br>
+/api/articles:
+Retrieves a list of all available articles.<br>
+/api/articles/{id}: Retrieves details of a specific product by its ID.<br>
+**Category Routes:**<br>
+/api/categories: Retrieves a list of all product categories.<br>
+/api/categories/{id}: Retrieves details of a specific category by its ID.<br>
+
+
+
+
+## 🪢 Branches
+
+
+| BRANCH      | Description                                                                         |
+| ----------- | ----------------------------------------------------------------------------------- |
+| main        | Main branch. Only final functional versions of the user stories will appear here    |
+| dev         | Development branch. Here we merge frontend and backend branches and check stability |
+| feature/... | Various branches each one for an individual feature                                 | 
+| test/...    | The branch for several tests                                                        |
+
+
+
+
+
+<br>
+
+
+## 🤝 Contributions
+
+
+Contributions are welcome. If you have any suggestions for improvement, please open an issue or pull request
+<br>
+
+
+## 👩‍💻 Author
+
+
+Created by:
+-   :rainbow: [Claudia González](https://github.com/claudiaglez)
