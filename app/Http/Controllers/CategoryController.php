@@ -57,10 +57,9 @@ class CategoryController extends Controller
 
     public function articles(Category $category)
     {
-        // Obtener los artículos asociados con la categoría especificada
-        $articles = $category->articles();
+        
+        $articles = $category->articles()->get();
 
-        // Devolver los artículos como una respuesta JSON
         return response()->json($articles);
     }
 
